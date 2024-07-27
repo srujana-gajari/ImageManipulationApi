@@ -1,0 +1,23 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+**/obj/
+**/bin/
+**/.DS_Store
+**/.idea
+**/out/
+
+/ImageManipulationApi/.vs/Auctane.LocalTaxService.Api
+/ImageManipulationApi/bin/Debug/net6.0
+/ImageManipulationApi/obj
+/ImageManipulationApi/bin/Release/net6.0/ref
+/ImageManipulationApi/bin/Release/net6.0
+
+.vs/
+.vs
+.suo
+ImageManipulationApi.sln.DotSettings.user
+.vs/ImageManipulationApi/v17/.suo
+.vs/ImageManipulationApi/DesignTimeBuild/.dtbcache.v2
+ImageManipulationApi/ImageManipulationApi.csproj.user
