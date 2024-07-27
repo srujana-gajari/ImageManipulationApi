@@ -52,7 +52,7 @@ namespace ImageManipulationApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("remove-background")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AdobeStatusResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] RemoveBackgroundRequest removeBackgroundRequest)
@@ -68,7 +68,7 @@ namespace ImageManipulationApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("depth-blur")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AdobeStatusResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] DepthBlurRequest applyFilterRequest)

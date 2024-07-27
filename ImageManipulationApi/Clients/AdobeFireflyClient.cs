@@ -114,7 +114,7 @@ namespace ImageManipulationApi.Clients
         /// <param name="removeBackgroundRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public async Task<string?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest, string? accessToken)
+        public async Task<AdobeStatusResponse?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest, string? accessToken)
         {
             var stopwatch = new Stopwatch();
             try
@@ -141,8 +141,9 @@ namespace ImageManipulationApi.Clients
 
                 }
                 var depthBlurResponse = JsonConvert.DeserializeObject<AdobeStatusResponse>(responseBody);
-                return await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "RB");
-
+                await Task.Delay(5000);
+                depthBlurResponse.Link.Self.Status = await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "RB");
+                return depthBlurResponse;
             }
             catch (Exception ex)
             {
@@ -161,7 +162,7 @@ namespace ImageManipulationApi.Clients
         /// <param name="applyFilterRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public async Task<string?> DepthBlurAsync(DepthBlurRequest applyFilterRequest, string? accessToken)
+        public async Task<AdobeStatusResponse?> DepthBlurAsync(DepthBlurRequest applyFilterRequest, string? accessToken)
         {
             var stopwatch = new Stopwatch();
             try
@@ -187,8 +188,9 @@ namespace ImageManipulationApi.Clients
                     throw new Exception(responseBody);
                 }
                 var depthBlurResponse = JsonConvert.DeserializeObject<AdobeStatusResponse>(responseBody);
-                return await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "DB");
-
+                await Task.Delay(5000);
+                depthBlurResponse.Link.Self.Status = await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "DB");
+                return depthBlurResponse;
             }
             catch (Exception ex)
             {

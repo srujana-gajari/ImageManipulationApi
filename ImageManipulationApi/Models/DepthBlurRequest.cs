@@ -55,5 +55,8 @@ namespace ImageManipulationApi.Models
     {
         [JsonProperty("href")]
         public string Href { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 }

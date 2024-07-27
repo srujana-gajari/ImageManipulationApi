@@ -44,7 +44,7 @@ namespace ImageManipulationApi.Services
         /// <param name="removeBackgroundRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public async Task<string?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest)
+        public async Task<AdobeStatusResponse?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest)
         {
             string accessToken = await _adobeFireflyClient.GetAccessTokenAsync(_imageManipulationConfiguration.ClientId, _imageManipulationConfiguration.Secret);
             return await _adobeFireflyClient.RemoveBackgroundJobAsync(removeBackgroundRequest, accessToken);
@@ -56,7 +56,7 @@ namespace ImageManipulationApi.Services
         /// <param name="applyFilterRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public async Task<string?> DepthBlurAsync(DepthBlurRequest applyFilterRequest)
+        public async Task<AdobeStatusResponse?> DepthBlurAsync(DepthBlurRequest applyFilterRequest)
         {
             string accessToken = await _adobeFireflyClient.GetAccessTokenAsync(_imageManipulationConfiguration.ClientId, _imageManipulationConfiguration.Secret);
             return await _adobeFireflyClient.DepthBlurAsync(applyFilterRequest, accessToken);

@@ -26,7 +26,7 @@ namespace ImageManipulationApi.Clients.Interfaces
         /// <param name="removeBackgroundRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        Task<string?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest, string? accessToken);
+        Task<AdobeStatusResponse?> RemoveBackgroundJobAsync(RemoveBackgroundRequest removeBackgroundRequest, string? accessToken);
 
         /// <summary>
         /// Depth Blur using Adobe Firefly Service
@@ -34,6 +34,6 @@ namespace ImageManipulationApi.Clients.Interfaces
         /// <param name="applyFilterRequest"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        Task<string?> DepthBlurAsync(DepthBlurRequest applyFilterRequest, string? accessToken);
+        Task<AdobeStatusResponse?> DepthBlurAsync(DepthBlurRequest applyFilterRequest, string? accessToken);
     }
 }
