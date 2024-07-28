@@ -45,6 +45,9 @@ namespace ImageManipulationApi.Models
     {
         [JsonProperty("_links")]
         public Link Link { get; set; }
+
+        [JsonProperty("input")]
+        public string Input { get; set; }
     }
     public class Link
     {

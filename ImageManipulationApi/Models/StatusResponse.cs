@@ -12,10 +12,16 @@ namespace ImageManipulationApi.Models
 
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        [JsonProperty("input")]
+        public string Input { get; set; }
     }
     public class StatusOutput
     {
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        [JsonProperty("input")]
+        public string Input { get; set; }
     }
 }

@@ -142,8 +142,7 @@ namespace ImageManipulationApi.Clients
                 }
                 var depthBlurResponse = JsonConvert.DeserializeObject<AdobeStatusResponse>(responseBody);
                 await Task.Delay(5000);
-                depthBlurResponse.Link.Self.Status = await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "RB");
-                return depthBlurResponse;
+                return await GetStatusAsync(depthBlurResponse, accessToken, "RB");
             }
             catch (Exception ex)
             {
@@ -189,8 +188,7 @@ namespace ImageManipulationApi.Clients
                 }
                 var depthBlurResponse = JsonConvert.DeserializeObject<AdobeStatusResponse>(responseBody);
                 await Task.Delay(5000);
-                depthBlurResponse.Link.Self.Status = await GetStatusAsync(depthBlurResponse.Link.Self.Href, accessToken, "DB");
-                return depthBlurResponse;
+                return await GetStatusAsync(depthBlurResponse, accessToken, "DB");
             }
             catch (Exception ex)
             {
@@ -209,14 +207,14 @@ namespace ImageManipulationApi.Clients
         /// <param name="accessToken"></param>
         /// <param name="flag"></param>
         /// <returns></returns>
-        private async Task<string> GetStatusAsync(string url, string? accessToken, string flag)
+        private async Task<AdobeStatusResponse> GetStatusAsync(AdobeStatusResponse adobeStatusResponse, string? accessToken, string flag)
         {
             var stopwatch = new Stopwatch();
             try
             {
-                _logger.LogInformation("GetStatusAsync Call started with Url={0}", url);
+                _logger.LogInformation("GetStatusAsync Call started with Url={0}", adobeStatusResponse.Link.Self.Href);
 
-                using var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+                using var requestMessage = new HttpRequestMessage(HttpMethod.Get, adobeStatusResponse.Link.Self.Href);
 
                 requestMessage.Headers.Add("X-API-Key", _imageManipulationConfiguration.ClientId);
                 requestMessage.Headers.Add("Authorization", $"Bearer {accessToken}");
@@ -234,16 +232,20 @@ namespace ImageManipulationApi.Clients
                 if (flag == "DB")
                 {
                     var statusResponse = JsonConvert.DeserializeObject<StatusResponse>(responseBody);
-                    return statusResponse.Outputs[0].Status;
+                    adobeStatusResponse.Link.Self.Status = statusResponse.Outputs[0].Status;
+                    adobeStatusResponse.Input = statusResponse.Outputs[0].Input;
+                    return adobeStatusResponse;
                 }
                 else if (flag == "RB")
                 {
                     var statusResponse = JsonConvert.DeserializeObject<StatusResponse>(responseBody);
-                    return statusResponse.Status;
+                    adobeStatusResponse.Link.Self.Status = statusResponse.Status;
+                    adobeStatusResponse.Input = statusResponse.Input;
+                    return adobeStatusResponse;
                 }
                 else
-                    return "";
-                
+                    return new AdobeStatusResponse();
+
             }
             catch (Exception ex)
             {
