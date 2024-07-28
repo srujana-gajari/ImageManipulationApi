@@ -1,6 +1,6 @@
    1. Prerequisites
       
-     a. Download .Net6.0.0 64 bit 
+     a. Download .Net 6.0.0 64 bit 
      b. Download Visual Studio 2022 
      c. Setup your aws credentials file under (C:\Users\{user}\.aws}
          c.1 Sample aws folder should like this: 
