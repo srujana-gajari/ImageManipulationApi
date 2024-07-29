@@ -17,12 +17,12 @@
               region = us-west-1(your region)
 
      
-   3. Clone Repo: https://github.com/srujana-gajari/ImageManipulationApi
-   4. Copy an image which needs to be uploaded to S3 bucket in the folder(~/ImageManipulationApi/ImageManipulationApi) where the project file is located.
-   5. Update file(ImageManipulationApi/Configuration/ImageManipulationConfiguration.cs) with your ClientId, Secret code, S3 Bucket Name and Region. (This is in general will be added in AWS parameter store for secure access. for now I have added it in code).
-   6. Lets run the Visual Studio in local to launch endpoints in swagger by selecting IIS Express like below
+   2. Clone Repo: https://github.com/srujana-gajari/ImageManipulationApi
+   3. Copy an image which needs to be uploaded to S3 bucket in the folder(~/ImageManipulationApi/ImageManipulationApi) where the project file is located.
+   4. Update file(ImageManipulationApi/Configuration/ImageManipulationConfiguration.cs) with your ClientId, Secret code, S3 Bucket Name and Region. (This is in general will be added in AWS parameter store for secure access. for now I have added it in code).
+   5. Lets run the Visual Studio in local to launch endpoints in swagger by selecting IIS Express like below
     ![image](https://github.com/user-attachments/assets/c4a28e68-c321-4d79-9bcb-dc61384f26c8)
-   7. Your swagger should like below: 
+   6. Your swagger should look like below: 
       ![image](https://github.com/user-attachments/assets/3db51bcc-574c-4262-b399-9c77093b87d4)
 
 You are now ready with endpoints.
